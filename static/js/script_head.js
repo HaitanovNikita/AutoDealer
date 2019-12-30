@@ -1,4 +1,4 @@
-document.getElementById("bodys").innerHTML+=`<header>
+document.getElementById("body").innerHTML+=`<header>
 <div class="pos-f-t">
     <div class="collapse" id="navbarToggleExternalContent">
       <div class=" bg-dark p-4">

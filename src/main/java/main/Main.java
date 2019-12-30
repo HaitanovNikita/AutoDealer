@@ -1,6 +1,7 @@
 package main;
 
 import logic.ClientDaoMySql;
+import logic.Server;
 import tables.Client;
 
 import java.util.ArrayList;
@@ -33,9 +34,10 @@ public class Main {
 //		ArrayList<Manager> alManagers = managerDaoMySql.readAllManagers();
 //		alManagers.stream().forEach((m) -> System.out.println(m.toString()));
 //
-		ClientDaoMySql clientDaoMySql = new ClientDaoMySql();
-//		clientDaoMySql.findClient(1);
-		ArrayList<Client> list = clientDaoMySql.readAllClients();
-		list.stream().forEach((c)-> System.out.println(c.toString()));
+//		ClientDaoMySql clientDaoMySql = new ClientDaoMySql();
+////		clientDaoMySql.findClient(1);
+//		ArrayList<Client> list = clientDaoMySql.readAllClients();
+//		list.stream().forEach((c)-> System.out.println(c.toString()));
+		new Server();
 	}
 }

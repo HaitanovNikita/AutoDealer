@@ -26,6 +26,50 @@ h4,h5{
     text-transform: uppercase;
 }
 
+.line-card,.img-card{position: relative;}
+
+.img-card{
+  width: 100%;
+  height:80%;
+  border-top: 0;
+}
+
+.text-card,.img-card{
+  border-bottom: 0;
+  border-radius: 2px;
+  border-style: solid;
+  border-color: #9b9b9b;
+}
+
+.text-card{
+  padding: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', serif; 
+  font-stretch: ultra-expanded;
+  border-bottom: 0;
+  letter-spacing: 0.4em;
+  font-weight: 800;
+  color:#9b9b9b;
+
+}
+
+.auto-card{
+  width: 250px;
+  margin: 15px;  
+  display: inline-block;
+  text-align: center;  
+}
+
+.line-card{
+  width:100%;
+  height: 7px;
+}
+
+.auto-card:hover .line-card{
+  background-color:#007bff;
+}
+
   * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
