@@ -1,10 +1,12 @@
 package tables;
 
+import logic.MachinePartsDao;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "ColorCar")
-public class ColorCar {
+public class ColorCar{
 
 	private int ID; 
 	private String color_car;
@@ -37,7 +39,12 @@ public class ColorCar {
 	public void setColor_car(String color_car) {
 		this.color_car = color_car;
 	}
-	
-	
-	
+
+
+	@Override
+	public String toString() {
+		return ID + " " + color_car ;
+
+	}
+
 }

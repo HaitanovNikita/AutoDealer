@@ -38,7 +38,10 @@ public class PowerCar {
 	public void setHorse_power(int horse_power) {
 		this.horse_power = horse_power;
 	}
-	
-	
 
+
+	@Override
+	public String toString() {
+		return ID + " " + horse_power;
+	}
 }

@@ -2,16 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57ce958b-57bb-4b48-b783-cadce55420c5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AutoDealer_1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AutoDealer_1.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logic/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tables/ColorCar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tables/ColorCar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tables/EngineCar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tables/EngineCar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tables/ModelCar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tables/ModelCar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tables/PowerCar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tables/PowerCar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tables/TypeCarBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tables/TypeCarBody.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/script.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/script_head.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/script_car_make.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/logic/Server$StaticHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/logic/Server$StaticHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/logic/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/logic/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tables/ColorCar.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tables/ColorCar.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +34,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -58,19 +63,19 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/static" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ArrayList2_generic" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\User\eclipse-workspace1\AutoDealer_1\static" />
-      <recent name="C:\Users\User\eclipse-workspace1\AutoDealer_1\src\main\java" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\eclipse-workspace1\AutoDealer_1\static\js" />
       <recent name="C:\Users\User\eclipse-workspace1\AutoDealer_1\src\main\resources" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\eclipse-workspace1\AutoDealer_1\static" />
+      <recent name="C:\Users\User\eclipse-workspace1\AutoDealer_1\src\main\java" />
     </key>
   </component>
   <component name="RunManager">
@@ -103,37 +108,77 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="275" y="26" key="#Inspections" timestamp="1577973750682">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="275" y="26" key="#Inspections/0.0.1366.738@0.0.1366.738" timestamp="1577973750682" />
+    <state x="275" y="0" width="816" height="738" key="#Intentions" timestamp="1577963254221">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="275" y="0" width="816" height="738" key="#Intentions/0.0.1366.738@0.0.1366.738" timestamp="1577963254221" />
     <state x="413" y="123" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1577723679524">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="413" y="123" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1577723679524" />
-    <state x="463" y="123" key="FileChooserDialogImpl" timestamp="1577709692999">
+    <state x="488" y="77" key="#com.intellij.ide.util.MemberChooser" timestamp="1577979400157">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="463" y="123" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1577709692999" />
-    <state width="1323" height="84" key="GridCell.Tab.0.bottom" timestamp="1577737833174">
+    <state x="488" y="77" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1577979400157" />
+    <state x="332" y="0" key="CommitChangelistDialog2" timestamp="1577963073797">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="84" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1577737833174" />
-    <state width="1323" height="84" key="GridCell.Tab.0.center" timestamp="1577737833174">
+    <state x="332" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1577963073797" />
+    <state x="463" y="123" key="FileChooserDialogImpl" timestamp="1577971326250">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="84" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1577737833174" />
-    <state width="1323" height="84" key="GridCell.Tab.0.left" timestamp="1577737833174">
+    <state x="463" y="123" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1577971326250" />
+    <state width="1323" height="227" key="GridCell.Tab.0.bottom" timestamp="1577988485662">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="84" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1577737833174" />
-    <state width="1323" height="84" key="GridCell.Tab.0.right" timestamp="1577737833174">
+    <state width="1323" height="227" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1577988485662" />
+    <state width="1323" height="227" key="GridCell.Tab.0.center" timestamp="1577988485662">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="84" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1577737833174" />
+    <state width="1323" height="227" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1577988485662" />
+    <state width="1323" height="227" key="GridCell.Tab.0.left" timestamp="1577988485660">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1323" height="227" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1577988485660" />
+    <state width="1323" height="227" key="GridCell.Tab.0.right" timestamp="1577988485662">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1323" height="227" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1577988485662" />
+    <state width="1323" height="227" key="GridCell.Tab.1.bottom" timestamp="1577988485664">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1323" height="227" key="GridCell.Tab.1.bottom/0.0.1366.738@0.0.1366.738" timestamp="1577988485664" />
+    <state width="1323" height="227" key="GridCell.Tab.1.center" timestamp="1577988485663">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1323" height="227" key="GridCell.Tab.1.center/0.0.1366.738@0.0.1366.738" timestamp="1577988485663" />
+    <state width="1323" height="227" key="GridCell.Tab.1.left" timestamp="1577988485662">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1323" height="227" key="GridCell.Tab.1.left/0.0.1366.738@0.0.1366.738" timestamp="1577988485662" />
+    <state width="1323" height="227" key="GridCell.Tab.1.right" timestamp="1577988485663">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1323" height="227" key="GridCell.Tab.1.right/0.0.1366.738@0.0.1366.738" timestamp="1577988485663" />
     <state x="184" y="10" key="SettingsEditor" timestamp="1577712287595">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="184" y="10" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1577712287595" />
-    <state x="339" y="165" width="672" height="677" key="run.anything.popup" timestamp="1577712060850">
+    <state x="379" y="106" width="607" height="526" key="find.popup" timestamp="1577980721574">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="339" y="165" width="672" height="677" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1577712060850" />
+    <state x="379" y="106" width="607" height="526" key="find.popup/0.0.1366.738@0.0.1366.738" timestamp="1577980721574" />
+    <state x="65" y="63" key="new project wizard" timestamp="1577971317128">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="65" y="63" key="new project wizard/0.0.1366.738@0.0.1366.738" timestamp="1577971317128" />
+    <state x="339" y="165" width="672" height="677" key="run.anything.popup" timestamp="1577982045323">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="339" y="165" width="672" height="677" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1577982045323" />
   </component>
 </project>

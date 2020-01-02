@@ -37,8 +37,10 @@ public class TypeCarBody {
 	public void setType_body(String type_body) {
 		this.type_body = type_body;
 	}
-	
-	
-	
-	
+
+
+	@Override
+	public String toString() {
+		return ID + " " + type_body;
+	}
 }

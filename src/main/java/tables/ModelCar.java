@@ -31,9 +31,12 @@ public class ModelCar {
 	public String getName_model() {
 		return name_model;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return ID + " " + name_model;
+	}
+
 	public void setId(int id) {
 		this.ID = id;
 	}

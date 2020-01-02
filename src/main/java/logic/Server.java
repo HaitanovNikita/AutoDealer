@@ -4,18 +4,19 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 import tables.Automobile;
+import tables.ModelCar;
 
 import java.io.*;
 import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
 
-import static org.hibernate.internal.util.io.StreamCopier.BUFFER_SIZE;
 
 public class Server {
 
@@ -36,6 +37,7 @@ public class Server {
         try{
             server = HttpServer.create(inetSocketAddress,5);
             server.createContext("/", new StaticHandler());
+            server.createContext("/api/get-client", new GetClientHandler());
 
             server.setExecutor(Executors.newCachedThreadPool());
             server.start();
@@ -45,11 +47,46 @@ public class Server {
         }
     }
 
+
+    static class GetClientHandler implements HttpHandler{
+
+        @Override
+        public void handle(HttpExchange exchange) throws IOException {
+            String query = exchange.getRequestURI().getQuery();
+            if(query!=null){
+                System.err.println("GetClientHandler");
+                System.err.println("query: "+query);
+              String answer = performOperation(query);
+              sendResponseHeaders(200,answer,exchange);
+              addCors(exchange);
+            }
+        }
+
+        private String performOperation(String query){
+            String[] arrSplitQuery = query.split("operation=|&id=");
+            String answer ="", operation="";
+            if(arrSplitQuery!=null){
+                System.out.println(Arrays.toString(arrSplitQuery));
+                 operation = arrSplitQuery[1];
+            }
+            switch (operation){
+                case "getAllModelCars":
+                    MachinePartsDaoMySql<ModelCar> partsDaoMySql = new MachinePartsDaoMySql<>(ModelCar.class);
+                    for(ModelCar m: partsDaoMySql.read()) answer+=m.toString()+" ";
+                    System.err.println("Answer: \n"+answer);
+                    break;
+
+            }
+
+            return answer;
+        }
+    }
+
     static class StaticHandler implements HttpHandler {
 
-        String answer = "";
-        String nameFile = "";
-        String query = "";
+        private String answer = "";
+        private String nameFile = "";
+        private String query = "";
 
         @Override
         public boolean equals (Object o){
@@ -72,8 +109,6 @@ public class Server {
 
             if (!query.equals("/")) {
                 System.out.println("query != null");
-//                String[] strQuery = query.split("/");
-//                nameFile = strQuery[1];
                 nameFile = query;
                 if(query.contains(".jpg") | query.contains(".png")){
                     System.err.println("Загружаем картинку/ Запрос: "+query);
@@ -98,47 +133,10 @@ public class Server {
 
         }
 
-        static void addCors(HttpExchange exchange) {
-            exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET");
-            exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
-        }
 
-        private static void sendResponseHeaders(int codeAnswer, String answer, HttpExchange exchange) throws IOException {
-            exchange.sendResponseHeaders(codeAnswer, answer.getBytes().length);
-            OutputStream os = exchange.getResponseBody();
-            os.write(answer.getBytes());
-            os.close();
-        }
 
         private static void readFile_2(HttpExchange exchange, String nameFile){
-   /*         String fileСontents = "";
 
-
-            System.out.println(PATH_FILE + nameFile);
-            File file = new File(PATH_FILE + nameFile);
-            if (!(file.exists() && !file.isDirectory())) {
-                fileСontents = "file not found";
-                System.err.println(fileСontents);
-            }
-            FileInputStream inF = null;
-            try {
-                DataOutputStream outF = new DataOutputStream(exchange.getResponseBody());
-                inF = new FileInputStream(file);
-                byte[] bytes = new byte[5*1024];
-                int count;
-                long lenght = file.length();
-                exchange.sendResponseHeaders(200, 0);
-                outF.writeLong(lenght);
-                while ((count = inF.read(bytes)) > -1) {
-                    outF.write(bytes, 0, count);
-                }
-                outF.close();
-                inF.close();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }*/
             String fileСontents = "";
             System.err.println("PATH: "+PATH_FILE + nameFile);
             Path path = Paths.get(PATH_FILE + nameFile);
@@ -178,28 +176,18 @@ public class Server {
             return fileСontents;
         }
 
-        /*@Override
-        public void handle(HttpExchange exchange) throws IOException {
-            String automobiles = "";
 
-            try {
-                automobileArrayList = automobileDaoMySQl.readAllAutomobiles();
-                for (Automobile a : automobileArrayList) {
-                    automobiles += a.getId() + " " + a.getModel_car() + " " +
-                            a.getCar_make()+ " " + a.getCar_price()+ " " +
-                            a.getColor_car()+ " " +a.getEngine_car()+ " " +
-                            a.getPower_car()+ " " +a.getType_car_body()+ " " +a.getYear_issue_car()+
-                            "\n";
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+    }
 
-            addCors(exchange);
-            exchange.sendResponseHeaders(200, automobiles.getBytes().length);
-            OutputStream os = exchange.getResponseBody();
-            os.write(automobiles.getBytes());
-            os.close();
-        }*/
+    static void addCors(HttpExchange exchange) {
+        exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET");
+        exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
+    }
+
+    private static void sendResponseHeaders(int codeAnswer, String answer, HttpExchange exchange) throws IOException {
+        exchange.sendResponseHeaders(codeAnswer, answer.getBytes().length);
+        OutputStream os = exchange.getResponseBody();
+        os.write(answer.getBytes());
+        os.close();
     }
 }
