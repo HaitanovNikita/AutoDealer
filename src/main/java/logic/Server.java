@@ -105,20 +105,20 @@ public class Server {
         public void handle (HttpExchange exchange) throws IOException {
 
             query = exchange.getRequestURI().toString();
-            System.out.println("query: " + query);
+//            System.out.println("query: " + query);
 
             if (!query.equals("/")) {
-                System.out.println("query != null");
+//                System.out.println("query != null");
                 nameFile = query;
-                if(query.contains(".jpg") | query.contains(".png")){
-                    System.err.println("Загружаем картинку/ Запрос: "+query);
+                if(query.contains(".jpg") | query.contains(".png")| query.contains(".jpeg")){
+//                    System.err.println("Загружаем картинку/ Запрос: "+query);
                     readFile_2(exchange,nameFile);
                     return;
                 }else{
                 answer = readFile(nameFile);
                     }
             } else if (query.equals("/")) {
-                System.out.println("query = null");
+//                System.out.println("query = null");
                 nameFile = "\\index.html";
                 answer = readFile(nameFile);
             }
@@ -138,7 +138,7 @@ public class Server {
         private static void readFile_2(HttpExchange exchange, String nameFile){
 
             String fileСontents = "";
-            System.err.println("PATH: "+PATH_FILE + nameFile);
+//            System.err.println("PATH: "+PATH_FILE + nameFile);
             Path path = Paths.get(PATH_FILE + nameFile);
             try {
                 byte[] fileBuffer = Files.readAllBytes(path);
@@ -156,7 +156,7 @@ public class Server {
 
         private static String readFile(String nameFile) {
             String fileСontents = "";
-            System.out.println(PATH_FILE + nameFile);
+//            System.out.println(PATH_FILE + nameFile);
             File f = new File(PATH_FILE + nameFile);
             if (!(f.exists() && !f.isDirectory())) {
                 fileСontents = "file not found";
