@@ -9,13 +9,13 @@ import tables.ModelCar;
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.concurrent.Executors;
-import java.util.stream.Collectors;
 
 
 public class Server {
@@ -25,59 +25,87 @@ public class Server {
     private static ArrayList<Automobile> automobileArrayList;
 
     public Server() {
-        automobileDaoMySQl= new AutomobileDaoMySQl();
+        automobileDaoMySQl = new AutomobileDaoMySQl();
         starting();
     }
 
-    private void starting(){
+    private void starting() {
         System.out.println("server auto dealer starting!");
 
         InetSocketAddress inetSocketAddress = new InetSocketAddress(1030);
         HttpServer server = null;
-        try{
-            server = HttpServer.create(inetSocketAddress,5);
+        try {
+            server = HttpServer.create(inetSocketAddress, 5);
             server.createContext("/", new StaticHandler());
             server.createContext("/api/get-client", new GetClientHandler());
 
             server.setExecutor(Executors.newCachedThreadPool());
             server.start();
 
-        }catch(IOException e ){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
 
-    static class GetClientHandler implements HttpHandler{
+    static class GetClientHandler implements HttpHandler {
 
         @Override
         public void handle(HttpExchange exchange) throws IOException {
             String query = exchange.getRequestURI().getQuery();
-            if(query!=null){
+            if (query != null) {
                 System.err.println("GetClientHandler");
-                System.err.println("query: "+query);
-              String answer = performOperation(query);
-              sendResponseHeaders(200,answer,exchange);
-              addCors(exchange);
+                System.err.println("query: " + query);
+                String answer = performOperation(query);
+                if (answer != "") {
+                    System.err.println("answer: " + answer);
+                    sendResponseHeaders(200, answer, exchange);
+                } else {
+                    sendResponseHeaders(405, answer, exchange);
+                }
+
+                addCors(exchange);
             }
         }
 
-        private String performOperation(String query){
-            String[] arrSplitQuery = query.split("operation=|&id=");
-            String answer ="", operation="";
-            if(arrSplitQuery!=null){
+        private String performOperation(String query) {
+            String[] arrSplitQuery = query.split("operation=|&");
+            String answer = "", operation = "";
+            if (arrSplitQuery != null) {
                 System.out.println(Arrays.toString(arrSplitQuery));
-                 operation = arrSplitQuery[1];
+                operation = arrSplitQuery[1];
             }
-            switch (operation){
+            switch (operation) {
                 case "getAllModelCars":
                     MachinePartsDaoMySql<ModelCar> partsDaoMySql = new MachinePartsDaoMySql<>(ModelCar.class);
-                    for(ModelCar m: partsDaoMySql.read()) answer+=m.toString()+" ";
-                    System.err.println("Answer: \n"+answer);
+                    for (ModelCar m : partsDaoMySql.read()) answer += m.toString() + " ";
+                    System.err.println("Answer: \n" + answer);
                     break;
+                case "getAutos":
+                    System.err.println("Enter case");
+                    arrSplitQuery = query.split("&id_model=");
+                    Arrays.stream(arrSplitQuery).forEach((s) -> System.out.println("arrays: " + s));
+                    AutomobileDaoMySQl automobileDaoMySQl = new AutomobileDaoMySQl();
+                    String queryToDb = "Select " +
+                            "a.id, a.car_price, a.car_make, a.year_issue_car, " +
+                            "p.horse_power, m.name_model, " +
+                            "e.type_engine, c.color_car, " +
+                            "t.type_body " +
+                            "from Automobile as a " +
+                            "inner join PowerCar as p on a.power_car = p.ID " +
+                            "inner join EngineCar as e on  a.engine_car = e.ID " +
+                            "inner join ColorCar as c on a.color_car = c.ID " +
+                            "inner join TypeCarBody as t on a.type_car_body= t.ID " +
+                            "inner join ModelCar as m on a.model_car = m.ID " +
+                            "where a.model_car = " + arrSplitQuery[1];
+                    for (Automobile a : automobileDaoMySQl.queryAboutAuto(queryToDb)) {
+                        answer += a.getId() + " " + a.getCar_make() + " " + a.getCar_price() + " " +
+                                a.getColor_carString() + " " + a.getEngine_carString() + " " + a.getModel_carString() + " " +
+                                a.getPower_car() + " " + a.getType_car_bodyString() + " " + a.getYear_issue_car()+" ";
+                    }
 
+                    break;
             }
-
             return answer;
         }
     }
@@ -89,7 +117,7 @@ public class Server {
         private String query = "";
 
         @Override
-        public boolean equals (Object o){
+        public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             StaticHandler that = (StaticHandler) o;
@@ -97,83 +125,46 @@ public class Server {
         }
 
         @Override
-        public int hashCode () {
+        public int hashCode() {
             return Objects.hash(query);
         }
 
         @Override
-        public void handle (HttpExchange exchange) throws IOException {
-
+        public void handle(HttpExchange exchange) throws IOException {
             query = exchange.getRequestURI().toString();
-//            System.out.println("query: " + query);
-
             if (!query.equals("/")) {
-//                System.out.println("query != null");
                 nameFile = query;
-                if(query.contains(".jpg") | query.contains(".png")| query.contains(".jpeg")){
-//                    System.err.println("Загружаем картинку/ Запрос: "+query);
-                    readFile_2(exchange,nameFile);
-                    return;
-                }else{
-                answer = readFile(nameFile);
-                    }
+                readFile(exchange, nameFile);
+                return;
             } else if (query.equals("/")) {
-//                System.out.println("query = null");
                 nameFile = "\\index.html";
-                answer = readFile(nameFile);
+                readFile(exchange, nameFile);
+                return;
             }
-
-            if (answer.equals("file not found")) {
-                sendResponseHeaders(404, "", exchange);
-            } else {
-//                System.out.println(answer);
-                sendResponseHeaders(200, answer, exchange);
-            }
-            addCors(exchange);
-
         }
 
-
-
-        private static void readFile_2(HttpExchange exchange, String nameFile){
+        private static void readFile(HttpExchange exchange, String nameFile) {
 
             String fileСontents = "";
-//            System.err.println("PATH: "+PATH_FILE + nameFile);
             Path path = Paths.get(PATH_FILE + nameFile);
-            try {
-                byte[] fileBuffer = Files.readAllBytes(path);
-                exchange.sendResponseHeaders(200, fileBuffer.length);
-                addCors(exchange);
-                OutputStream body = exchange.getResponseBody();
-                body.write(fileBuffer);
-                body.close();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        }
-
-        private static String readFile(String nameFile) {
-            String fileСontents = "";
-//            System.out.println(PATH_FILE + nameFile);
-            File f = new File(PATH_FILE + nameFile);
-            if (!(f.exists() && !f.isDirectory())) {
-                fileСontents = "file not found";
-                return fileСontents;
-            }
-
-            try (FileReader reader = new FileReader(PATH_FILE + nameFile)) {
-                int c;
-                while ((c = reader.read()) != -1) {
-                    fileСontents += (char) c;
+            if (path != null) {
+                try {
+                    byte[] fileBuffer = Files.readAllBytes(path);
+                    if (fileBuffer != null) {
+                        exchange.sendResponseHeaders(200, fileBuffer.length);
+                        addCors(exchange);
+                        OutputStream body = exchange.getResponseBody();
+                        body.write(fileBuffer);
+                        body.close();
+                    } else {
+                        sendResponseHeaders(404, "", exchange);
+                    }
+                } catch (NoSuchFileException e) {
+                    System.err.println(e.toString());
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-
-            } catch (IOException ex) {
-                System.out.println(ex.getMessage());
-
             }
-            return fileСontents;
         }
 
 

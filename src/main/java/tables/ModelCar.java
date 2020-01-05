@@ -18,11 +18,11 @@ public class ModelCar {
 		this.ID = id;
 		this.name_model = name_model;
 	}
-	
-	
+
+
 	@Id
 	@JoinColumn(name = "ID")
-	public int getId() {
+	public int getID() {
 		return ID;
 	}
 	
@@ -37,12 +37,10 @@ public class ModelCar {
 		return ID + " " + name_model;
 	}
 
-	public void setId(int id) {
-		this.ID = id;
+	public void setID(int ID) {
+		this.ID = ID;
 	}
-	
-	
-	
+
 	public void setName_model(String name_model) {
 		this.name_model = name_model;
 	}

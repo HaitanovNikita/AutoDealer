@@ -11,13 +11,19 @@ document.getElementById("body").innerHTML+=`<header>
               </a>
             </div>
             <div class="flip">
+            <a href="https://dribbble.com/shots/2507318-start-rollover" target="about">
+                <div class="front">Про нас</div>
+                <div class="back">Про нас</div>
+            </a>
+            </div>
+            <div class="flip">
                 <a href="https://dribbble.com/shots/2507318-start-rollover" target="about">
                     <div class="front">Про нас</div>
                     <div class="back">Про нас</div>
               </a>
             </div>
             <div class="flip">
-                <a href="https://dribbble.com/shots/2507318-start-rollover" target="order">
+                <a href="/findCar.html" target="order">
                     <div class="front">На замовлення</div>
                     <div class="back">На замовлення</div>
               </a>

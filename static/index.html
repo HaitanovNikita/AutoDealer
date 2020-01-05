@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Audi UA</title>
-
+	<link rel="shortcut icon" href="/images/logo1.png" type="image/png">
 	<link rel="stylesheet" type="text/javascript" href="js/script_class.js">
 	<link rel="stylesheet" type="text/javascript" href="js/script_head.js">
 	<link rel="stylesheet" type="text/javascript" href="js/script_car_model.js">
@@ -66,7 +66,8 @@
 	</div>
 	<div id="auto-cards-container">
 		<h2 class="font-weight-bold text-monospace" style="margin: 40px;">Оберіть свій Audi</h2>
-		<p class="font-weight-light text-monospace" style="margin: 25px;">Audi запрошує Вас поринути у світ розкоші. Це ексклюзивне запрошення
+		<p class="font-weight-light text-monospace" style="margin: 25px;">Audi запрошує Вас поринути у світ розкоші. Це
+			ексклюзивне запрошення
 			лише для обраних.<br> Воно не лише
 			надає доступ до наших дійсно виняткових автомобілів,<br> але й відчиняє двері у світ краси і престижу, який
 			їх
@@ -75,6 +76,7 @@
 	</div>
 	<script>
 		let linkToHomePage = 'http://192.168.0.103:1030';
+		// let linkToHomePage = 'http://192.168.43.174:1030';
 		var xhr = new XMLHttpRequest();
 
 		xhr.open('POST', '/api/get-client/?operation=getAllModelCars', false);
@@ -92,10 +94,23 @@
 			}
 
 		}
+
+
+		var elements = document.querySelectorAll(".auto-card");
+		for (var i = 0; i < elements.length; i++) {
+			elements[i].onclick = function () {
+				
+				let name_model = this.textContent.split(' ');
+				let id_model_car = name_model[29].replace(/\s+/g,'');
+				document.cookie="idModel="+id_model_car+';';// path=/; expires='+new Date(Date.now() + 86400e3).toUTCString;
+				alert(document.cookie);
+				window.location.href='/findCar.html';
+			};
+		}
 	</script>
 
 	<!-- <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/COXKClux2cQ?controls=0" frameborder="0" -->
-		<!-- allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+	<!-- allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 
 
 </body>

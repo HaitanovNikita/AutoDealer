@@ -96,22 +96,22 @@ public class Automobile {
 		return type_car_body;
 	}
 
-//	public String getModel_carString() {
-//		return model_carString;
-//	}
-//
-//	public String getEngine_carString() {
-//		return engine_carString;
-//	}
-//
-//	public String getColor_carString() {
-//		return color_carString;
-//	}
-//
-//
-//	public String getType_car_bodyString() {
-//		return type_car_bodyString;
-//	}
+	public String getModel_carString() {
+		return model_carString;
+	}
+
+	public String getEngine_carString() {
+		return engine_carString;
+	}
+
+	public String getColor_carString() {
+		return color_carString;
+	}
+
+
+	public String getType_car_bodyString() {
+		return type_car_bodyString;
+	}
 
 	public void setId(int id) {
 		this.ID = id;
@@ -166,25 +166,28 @@ public class Automobile {
 					+ "model_car=" + model_car + ",\n" + "year_issue_car=" + year_issue_car + ",\n" + "power_car="
 					+ power_car + ",\n" + "engine_car=" + engine_car + ",\n" + "color_car=" + color_car + ",\n"
 					+ "type_car_body=" + type_car_body +  "\n]\n";
+
 		}
 	}
 
 
 
-//	public void setModel_carString(String model_carString) {
-//		this.model_carString = model_carString;
-//	}
-//
-//	public void setEngine_carString(String engine_carString) {
-//		this.engine_carString = engine_carString;
-//	}
-//
-//	public void setColor_carString(String color_carString) {
-//		this.color_carString = color_carString;
-//	}
-//
-//	public void setType_car_bodyString(String type_car_bodyString) {
-//		this.type_car_bodyString = type_car_bodyString;
-//	}
+
+
+	public void setModel_carString(String model_carString) {
+		this.model_carString = model_carString;
+	}
+
+	public void setEngine_carString(String engine_carString) {
+		this.engine_carString = engine_carString;
+	}
+
+	public void setColor_carString(String color_carString) {
+		this.color_carString = color_carString;
+	}
+
+	public void setType_car_bodyString(String type_car_bodyString) {
+		this.type_car_bodyString = type_car_bodyString;
+	}
 
 }
