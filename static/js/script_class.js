@@ -15,14 +15,14 @@ class Auto{
 
     auto(){
         return `<div class="car-container">
-        <img class="card-img-top text-monospace" alt="Audi S8" src="images/`+this.ID+`.jpg">
+        <img class="card-img-top text-monospace" alt="Audi S8" src="images/auto-cards/`+this.ID+`.jpg">
         <div class="card-body">
             <h5 class="card-title text-monospace">`+this.car_make+'  '+this.model_car+ ` <span class="badge badge-dark">Release:`+this.year_issue_car+`</span> </h5>
             <h6 class="card-subtitle mb-2 text-muted text-monospace">`+this.type_car_body+`</h6>
             <p class="card-text card-title">Engine: `+this.engine_car+`</p>
             <p class="card-text card-title">Power: `+this.power_car+`</p>
             <p class="card-text card-title">Price: `+this.car_price+` $</p>
-            <p class="card-text card-title">Color: `+this.color_car+`</p>
+            <p class="card-text card-title">Color: `+this.color_car+' id: '+this.ID+`</p>
         </div>
         <div class="line-card"></div >
     </div>`;

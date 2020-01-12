@@ -11,25 +11,19 @@ document.getElementById("body").innerHTML+=`<header>
               </a>
             </div>
             <div class="flip">
-            <a href="https://dribbble.com/shots/2507318-start-rollover" target="about">
-                <div class="front">Про нас</div>
-                <div class="back">Про нас</div>
+            <a href="/audiConnect.html" target="about">
+                <div class="front">Audi Connect</div>
+                <div class="back">Audi Connect</div>
             </a>
             </div>
             <div class="flip">
-                <a href="https://dribbble.com/shots/2507318-start-rollover" target="about">
-                    <div class="front">Про нас</div>
-                    <div class="back">Про нас</div>
+                <a href="/searchCar.html" target="order">
+                    <div class="front">Пошук авто</div>
+                    <div class="back">Пошук авто</div>
               </a>
             </div>
             <div class="flip">
-                <a href="/findCar.html" target="order">
-                    <div class="front">На замовлення</div>
-                    <div class="back">На замовлення</div>
-              </a>
-            </div>
-            <div class="flip">
-                <a href="https://dribbble.com/shots/2507318-start-rollover" target="info">
+                <a href="/legalInformation.html" target="info">
                     <div class="front">Юр. інформація</div>
                     <div class="back">Юр. інформація</div>
               </a>
@@ -41,8 +35,10 @@ document.getElementById("body").innerHTML+=`<header>
               </a>
             </div>
           </div>
+          <div id="container_model_cars"></div>
       </div>
     </div>
+    
     <nav class="navbar navbar-dark bg-dark">
         <h5 class="text-white-50" >Audi Ukraine</h5>
        <a href=/index.html> <img class="logo-img" src="images/logo1.png" alt="Audi"></a>

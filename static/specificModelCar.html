@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contacts</title>
+
+    <link rel="shortcut icon" href="/images/logo1.png" type="image/png"> <!-- иконка страницы -->
+    <link rel="stylesheet" type="text/javascript" href="js/script_class.js">
+    <link rel="stylesheet" type="text/javascript" href="js/script_head.js">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Дизайн кнопок меню -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+</head>
+
+
+<body id="body">
+    <script type="text/javascript" src="js/script_head.js"></script>
+
+    <img id="searchCarImg" src="/images/specificModelCarJpg.jpg">
+
+    <div class="auto-cards-container" style="text-align: center; border-top:1px solid #9b9b9b; border-bottom:1px solid #9b9b9b; margin: 50px;">
+        <h2 class="font-weight-bold  text-monospace" style="margin: 40px;">НАВАЖСЯ БУТИ ІНШИМ</h2>
+        <p class="font-weight-bold text-monospace " style="margin: 25px;">
+            Audi створений для новаторів, трейлблейзерів і порушників правил. <br>Для тих, хто наважується бути іншим.
+        </p>
+
+        <br>
+        <h5 id="model_car" class="descriptive-title"></h5>
+        <br>
+        <div class="descriptive-card" style="width: 18rem;">
+            <h5 class="descriptive-title">Надихайтеся</h5>
+            <p class="descriptive-text">Ця унікальна колекція моделей, яка демонструє найкращі зразки нашої роботи,
+                створювалася під пильним наглядом нашої команди експертів з дизайну.</p>
+        </div>
+        <div class="descriptive-card" style="width: 18rem;">
+            <h5 class="descriptive-title">Виготовлення на замовлення</h5>
+            <p class="descriptive-text">Ви не просто купуєте Audi — Ви його замовляєте, як витвір мистецтва або
+                ексклюзивну яхту. Можливості для персоналізації практично безмежні.</p>
+        </div>
+        <div class="descriptive-card" style="width: 18rem;">
+            <h5 class="descriptive-title">Авто з пробігом</h5>
+            <p class="descriptive-text">Придбання Audi, який був створений з використанням надсучасних технологій і
+                складений вручну, завжди є винятковим досвідом, незалежно від його віку.</p>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/script_class.js"></script>
+
+
+    <div id="cars-container" class="cars-container">
+
+    </div>
+
+    <script>
+
+        let my_cookie = document.cookie;
+        let arr = my_cookie.split(' ');
+        arr = my_cookie.split('=');
+        let modelcar = arr[4].split(';')
+        
+        
+
+
+        let linkToHomePage = 'http://192.168.0.103:1030';
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('POST', '/api/get-client/?operation=getAutos&id_model=' + arr[5], false);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // Отправляем кодировку                
+        xhr.send('/api/get-client/?operation=getAutos&id_model=' + arr[5]);
+
+        if (xhr.status != 200) {
+            alert(xhr.status + ': ' + xhr.statusText + ' no answer');
+        } else {
+            console.log(xhr.responseText);
+            let arrResponseText = xhr.responseText.split(" ");
+            document.getElementById("model_car").append(arrResponseText[5]);
+            let i = 0;
+            while (i < arrResponseText.length - 1) {
+                new Auto(arrResponseText[i],
+                    arrResponseText[i + 2],
+                    arrResponseText[i + 1],
+                    arrResponseText[i + 8],
+                    arrResponseText[i + 6],
+                    arrResponseText[i + 5],
+                    arrResponseText[i + 4],
+                    arrResponseText[i + 3],
+                    arrResponseText[i + 7]);
+                // console.log(i+': '+arrResponseText[i]) 
+                i += 9;
+                // i++;
+            }
+
+        }
+    </script>
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Custom Car</title>
+
+    <link rel="shortcut icon" href="/images/logo1.png" type="image/png"> <!-- иконка страницы -->
+    <link rel="stylesheet" type="text/javascript" href="js/script_class.js">
+    <link rel="stylesheet" type="text/javascript" href="js/script_head.js">
+    <link rel="stylesheet" type="text/javascript" href="js/script_get_component.js">
+    <link rel="stylesheet" type="text/javascript" href="js/script_build_model_car_cards.js">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Дизайн кнопок меню -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+</head>
+
+
+<body id="body">
+    <script type="text/javascript" src="js/script_head.js"></script>
+    <script type="text/javascript" src="js/script_class.js"></script>
+    <script type="text/javascript" src="js/script_get_component.js"></script>
+
+    <img id="searchCarImg" src="/images/searchCarImg.jpg">
+
+    <div style="text-align: center; border-top:1px solid #9b9b9b; margin:50px;">
+
+        <h2 class="font-weight-bold text-monospace"  style="margin: 40px; ">Знайдіть свою модель Audi</h2>
+        <p class="font-weight-light text-monospace" style="margin: 25px; ">Можливо і серед нашого арсеналу знайдеться
+            машина вашої мрії !</p>
+    </div>
+
+    <div id="containerSearchAuto">
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold text-monospace" style="text-transform: uppercase;" for="inputState">Модель авто</label>
+            <select id="inputState model_auto" name="model_auto" type="text" class="form-control">
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold text-monospace" style="text-transform: uppercase;" for="inputState">Тип двигуна авто</label>
+            <select id="inputState engine_car" name="engine_car" type="text" class="form-control">
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold text-monospace" style="text-transform: uppercase;" for="inputState">Потужність авто</label>
+            <select id="inputState power_car" name="power_car" type="text" class="form-control">
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold text-monospace" style="text-transform: uppercase;" for="inputState">Кузов авто</label>
+            <select id="inputState car_body" name="car_body" type="text" class="form-control">
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label class="font-weight-bold text-monospace" style="text-transform: uppercase;" for="inputState">Колір автомобіля</label>
+            <select id="inputState color_car" name="color_car" type="text" class="form-control">
+            </select>
+        </div>
+    </div>
+    <button id="searchBtn" class="btn btn-dark">Пошук</button>
+    </div>
+ 
+    <div id="auto-cards-container">
+        <h2 class="font-weight-bold text-monospace" style="margin: 40px;">Оберіть модель Audi</h2>
+        <script type="text/javascript" src="js/script_car_model.js"></script>
+    </div>
+
+    <script type="text/javascript" src="js/script_build_model_car_cards.js"></script>
+
+
+    <script>
+        document.getElementById('searchBtn').onclick = function () {
+            document.getElementById("cars-container").innerHTML = '';
+            let model = document.getElementById('inputState model_auto').value;
+            // console.log(document.getElementById('inputState model_auto').name);
+            let engine = document.getElementById('inputState engine_car').value;
+            let power = document.getElementById('inputState power_car').value;
+            let body = document.getElementById('inputState car_body').value;
+            let color = document.getElementById('inputState color_car').value;
+            let xhr = new XMLHttpRequest();
+            let path = '/api/get-client/?operation=searchAuto&model_auto=' + model + '&engine_car=' + engine + '&power_car=' + power + '&car_body=' + body + '&color_car=' + color;
+            xhr.open('POST', path, false);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // Отправляем кодировку                
+            xhr.send(path);
+
+            if (xhr.status != 200) {
+                alert(xhr.status + ': ' + xhr.statusText + ' no answer');
+            } else {
+                console.log(xhr.responseText);
+                let arrResponseText = xhr.responseText.split(" ");
+                let i = 0;
+                while (i < arrResponseText.length - 1) {
+                    new Auto(arrResponseText[i],
+                        arrResponseText[i + 2],
+                        arrResponseText[i + 1],
+                        arrResponseText[i + 8],
+                        arrResponseText[i + 6],
+                        arrResponseText[i + 5],
+                        arrResponseText[i + 4],
+                        arrResponseText[i + 3],
+                        arrResponseText[i + 7]);
+                    i += 9;
+                }
+
+            }
+        }
+
+        function getAllComponentsCar(nameComponent, containerElement) {
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', '/api/get-client/?operation=' + nameComponent, false);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // Отправляем кодировку                
+            xhr.send('/api/get-client/?operation=' + nameComponent);
+
+            if (xhr.status != 200) {
+                alert(xhr.status + ': ' + xhr.statusText + ' no answer');
+            } else {
+                console.log(xhr.responseText);
+                let arrResponseText = xhr.responseText.split(" ");
+                let i = 0;
+                let construction = '';
+                while (i < arrResponseText.length - 1) {
+                    let id, component;
+                    new ComponentCar(arrResponseText[i], arrResponseText[i + 1], containerElement);
+                    i += 2;
+                }
+            }
+
+        }
+
+        this.getAllComponentsCar('getAllModelCars', 'inputState model_auto');
+        this.getAllComponentsCar('GetAllEngineCar', 'inputState engine_car');
+        this.getAllComponentsCar('GetAllPowerCar', 'inputState power_car');
+        this.getAllComponentsCar('GetAllTypeCarBody', 'inputState car_body');
+        this.getAllComponentsCar('GetAllColorCar', 'inputState color_car');
+
+    </script>
+
+    <p class="font-weight-light text-monospace" style="margin: 100px; ">
+        Значення не стосуються конкретного транспортного засобу та не є частиною пропозиції, але служать лише для
+        порівняння між різними типами автомобілів. Показники викидів СО2 та споживання палива - значення, обчислені як
+        частина попередньої конфігурації транспортного засобу. Не виключено, що в процесі виробництва трапляються
+        відхилення цих значень CO2 та споживання палива, закладених на етапі конструювання, тому значення СО2 та
+        споживання палива, обчислені в контексті попередньої конфігурації даних, не відповідають величинам CO2 та
+        витратам палива автомобіля, що купується. Витрата палива та викиди СО₂ транспортного засобу залежать не тільки
+        від ефективного використання пального автомобіля, а й від поведінки за кермом, відстані руху та інших
+        нетехнічних факторів. Значення показників автомобіля, що є предметом купівлі, може відхилятися від пропозиції
+        вгору або вниз. Зокрема, деякі опції та аксесуари (наприклад, ширші шини, кондиціонер, багажник на даху, чинники
+        аеродинаміки тощо) можуть призвести до змін витрат палива та CO₂.
+    </p>
+
+
+</body>
+
+
+
+</html>

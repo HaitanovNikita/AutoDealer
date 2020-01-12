@@ -4,14 +4,12 @@
     <list default="true" id="57ce958b-57bb-4b48-b783-cadce55420c5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logic/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tables/Automobile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tables/Automobile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tables/ModelCar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tables/ModelCar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/bootstrap/css/bootstrap-grid.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/bootstrap/css/bootstrap.min.css.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/static/contacts.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/contacts.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/findCar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/13.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/13.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/15.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/15.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/script_car_model.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/script_car_model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/script_class.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/script_class.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/script_head.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/script_head.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/logic/Server$GetClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/logic/Server$GetClientHandler.class" afterDir="false" />
@@ -34,8 +32,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -64,7 +62,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/TravelAgencyV2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
@@ -129,26 +127,26 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="332" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1578079036338" />
-    <state x="463" y="123" key="FileChooserDialogImpl" timestamp="1578233121988">
+    <state x="463" y="123" key="FileChooserDialogImpl" timestamp="1578321466820">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="463" y="123" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1578233121988" />
-    <state width="1323" height="127" key="GridCell.Tab.0.bottom" timestamp="1578254040465">
+    <state x="463" y="123" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1578321466820" />
+    <state width="1323" height="336" key="GridCell.Tab.0.bottom" timestamp="1578780640911">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="127" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1578254040465" />
-    <state width="1323" height="127" key="GridCell.Tab.0.center" timestamp="1578254040465">
+    <state width="1323" height="336" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1578780640911" />
+    <state width="1323" height="336" key="GridCell.Tab.0.center" timestamp="1578780640909">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="127" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1578254040465" />
-    <state width="1323" height="127" key="GridCell.Tab.0.left" timestamp="1578254040465">
+    <state width="1323" height="336" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1578780640909" />
+    <state width="1323" height="336" key="GridCell.Tab.0.left" timestamp="1578780640908">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="127" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1578254040465" />
-    <state width="1323" height="127" key="GridCell.Tab.0.right" timestamp="1578254040465">
+    <state width="1323" height="336" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1578780640908" />
+    <state width="1323" height="336" key="GridCell.Tab.0.right" timestamp="1578780640910">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="127" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1578254040465" />
+    <state width="1323" height="336" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1578780640910" />
     <state width="1323" height="227" key="GridCell.Tab.1.bottom" timestamp="1577988485664">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -169,10 +167,14 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="184" y="10" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1577712287595" />
-    <state x="379" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1578219479964">
+    <state x="379" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1578730181137">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="379" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1578219479964" />
+    <state x="379" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1578730181137" />
+    <state x="492" y="285" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1578657793674">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="492" y="285" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1578657793674" />
     <state x="379" y="106" width="607" height="526" key="find.popup" timestamp="1578219557780">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -181,13 +183,13 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="65" y="63" key="new project wizard/0.0.1366.738@0.0.1366.738" timestamp="1577971317128" />
-    <state x="339" y="165" width="672" height="677" key="run.anything.popup" timestamp="1577982045323">
+    <state x="339" y="165" width="672" height="677" key="run.anything.popup" timestamp="1578731561453">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="339" y="165" width="672" height="677" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1577982045323" />
-    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1578249566598">
+    <state x="339" y="165" width="672" height="677" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1578731561453" />
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1578692848839">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1578249566598" />
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1578692848839" />
   </component>
 </project>

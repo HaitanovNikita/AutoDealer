@@ -3,8 +3,7 @@ package logic;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
-import tables.Automobile;
-import tables.ModelCar;
+import tables.*;
 
 import java.io.*;
 import java.net.InetSocketAddress;
@@ -76,35 +75,67 @@ public class Server {
                 operation = arrSplitQuery[1];
             }
             switch (operation) {
+                case "searchAuto":
+                    arrSplitQuery = query.split("operation=|&model_auto=|&engine_car=|&power_car=|&car_body=|&color_car=");
+                    System.out.println(Arrays.toString(arrSplitQuery));
+                    AutomobileDaoMySQl automobileDaoMySQl = new AutomobileDaoMySQl();
+                    String queryTodb = Utilites.queryGetAllCars + " where a.model_car = " + arrSplitQuery[2] +
+                            " and a.engine_car=" + arrSplitQuery[3] +
+                            " and a.power_car =" + arrSplitQuery[4] +
+                            " and a.type_car_body = " + arrSplitQuery[5] +
+                            " and a.color_car = " + arrSplitQuery[6];
+                    answer=buildAnswerAuto(automobileDaoMySQl.queryAboutAuto(queryTodb),"Машини за даними характеристиками відсутні!");
+                    break;
                 case "getAllModelCars":
-                    MachinePartsDaoMySql<ModelCar> partsDaoMySql = new MachinePartsDaoMySql<>(ModelCar.class);
-                    for (ModelCar m : partsDaoMySql.read()) answer += m.toString() + " ";
-                    System.err.println("Answer: \n" + answer);
+                    MachinePartsDaoMySql<ModelCar> alModelsCar = new MachinePartsDaoMySql<>(ModelCar.class);
+                    for (ModelCar m : alModelsCar.read()) answer += m.toString() + " ";
+                    break;
+                case "GetAllTypeCarBody":
+                    MachinePartsDaoMySql<TypeCarBody> alTypesCarBody = new MachinePartsDaoMySql(TypeCarBody.class);
+                    for (TypeCarBody typeCarBody : alTypesCarBody.read()) {
+                        answer += typeCarBody.toString() + " ";
+                    }
+                    break;
+                case "GetAllEngineCar":
+                    MachinePartsDaoMySql<EngineCar> alEngineCar = new MachinePartsDaoMySql(EngineCar.class);
+                    for (EngineCar engineCar : alEngineCar.read()) {
+                        answer += engineCar.toString() + " ";
+                    }
+                    break;
+                case "GetAllPowerCar":
+                    MachinePartsDaoMySql<PowerCar> alPowerCar = new MachinePartsDaoMySql(PowerCar.class);
+                    for (PowerCar powerCar : alPowerCar.read()) {
+                        answer += powerCar.toString() + " ";
+                    }
+                    break;
+                case "GetAllColorCar":
+                    MachinePartsDaoMySql<ColorCar> alColorCar = new MachinePartsDaoMySql(ColorCar.class);
+                    for (ColorCar colorCar : alColorCar.read()) {
+                        answer += colorCar.toString() + " ";
+                    }
                     break;
                 case "getAutos":
-                    System.err.println("Enter case");
                     arrSplitQuery = query.split("&id_model=");
                     Arrays.stream(arrSplitQuery).forEach((s) -> System.out.println("arrays: " + s));
-                    AutomobileDaoMySQl automobileDaoMySQl = new AutomobileDaoMySQl();
-                    String queryToDb = "Select " +
-                            "a.id, a.car_price, a.car_make, a.year_issue_car, " +
-                            "p.horse_power, m.name_model, " +
-                            "e.type_engine, c.color_car, " +
-                            "t.type_body " +
-                            "from Automobile as a " +
-                            "inner join PowerCar as p on a.power_car = p.ID " +
-                            "inner join EngineCar as e on  a.engine_car = e.ID " +
-                            "inner join ColorCar as c on a.color_car = c.ID " +
-                            "inner join TypeCarBody as t on a.type_car_body= t.ID " +
-                            "inner join ModelCar as m on a.model_car = m.ID " +
-                            "where a.model_car = " + arrSplitQuery[1];
-                    for (Automobile a : automobileDaoMySQl.queryAboutAuto(queryToDb)) {
-                        answer += a.getId() + " " + a.getCar_make() + " " + a.getCar_price() + " " +
-                                a.getColor_carString() + " " + a.getEngine_carString() + " " + a.getModel_carString() + " " +
-                                a.getPower_car() + " " + a.getType_car_bodyString() + " " + a.getYear_issue_car()+" ";
-                    }
-
+                    AutomobileDaoMySQl autoDaoMySQl = new AutomobileDaoMySQl();
+                    String queryToDb = Utilites.queryGetAllCars + " where a.model_car = " + arrSplitQuery[1];
+                    answer=buildAnswerAuto(autoDaoMySQl.queryAboutAuto(queryToDb),"Зараз немає авто для продажів!");
                     break;
+            }
+            return answer;
+        }
+
+        private String buildAnswerAuto(ArrayList<Automobile> autoArrayList,String elseAnswer){
+            ArrayList<Automobile> automobileArrayList = autoArrayList;
+            String answer = "";
+            if (automobileArrayList.isEmpty() == false) {
+                for (Automobile a : automobileArrayList) {
+                    answer += a.getId() + " " + a.getCar_make() + " " + a.getCar_price() + " " +
+                            a.getColor_carString() + " " + a.getEngine_carString() + " " + a.getModel_carString() + " " +
+                            a.getPower_car() + " " + a.getType_car_bodyString() + " " + a.getYear_issue_car() + " ";
+                }
+            } else {
+                answer = elseAnswer;
             }
             return answer;
         }
